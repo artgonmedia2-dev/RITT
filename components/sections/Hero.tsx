@@ -74,13 +74,6 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-        aria-hidden="true"
-        style={{ background: 'linear-gradient(to bottom, transparent, #fafbfc)' }}
-      />
-
       {/* Content */}
       <div className="relative container-ritt pt-28 pb-20">
         <motion.div
@@ -152,8 +145,8 @@ export default function Hero() {
 
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0 z-10" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" className="w-full" fill="#fafbfc">
-          <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
+        <svg viewBox="0 0 1440 80" className="w-full" fill="#fafbfc">
+          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
         </svg>
       </div>
     </section>

@@ -7,8 +7,8 @@ import { MapPin, Users } from 'lucide-react'
 import { networkRegions, NetworkRegion } from '@/lib/data'
 import SectionTitle from '@/components/shared/SectionTitle'
 
-// Morocco HQ anchor — percentage coordinates within the world map
-const MOROCCO = { x: 42, y: 32 }
+// Morocco HQ anchor — Casablanca (~8°W, 33.6°N) mapped to this SVG's equirectangular space
+const MOROCCO = { x: 47, y: 35 }
 
 // Convert % coords to world-map-dots.svg viewBox (0 0 2100 1312.5)
 const toSvg = (x: number, y: number) => ({ x: x * 21, y: y * 13.125 })
@@ -82,19 +82,27 @@ export default function NetworkMap() {
               <motion.circle
                 cx={ma.x} cy={ma.y} r={24}
                 fill="#00bcd4"
-                animate={{ r: [24, 42, 24], opacity: [0.28, 0, 0.28] }}
+                animate={{ r: [24, 44, 24], opacity: [0.3, 0, 0.3] }}
                 transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <circle cx={ma.x} cy={ma.y} r={15} fill="#00bcd4" stroke="white" strokeWidth={4} />
+              <circle cx={ma.x} cy={ma.y} r={16} fill="#00bcd4" stroke="white" strokeWidth={5} />
+              {/* Label with white pill background */}
+              <rect
+                x={ma.x - 52} y={ma.y - 52}
+                width={104} height={26}
+                rx={13} ry={13}
+                fill="white"
+                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))' }}
+              />
               <text
-                x={ma.x} y={ma.y - 24}
+                x={ma.x} y={ma.y - 33}
                 textAnchor="middle"
-                fontSize={16}
+                fontSize={14}
                 fontWeight={800}
                 fill="#0d1642"
-                style={{ letterSpacing: '0.04em' }}
+                style={{ letterSpacing: '0.06em' }}
               >
-                RITT HQ
+                RITT — Maroc
               </text>
             </svg>
           </div>
