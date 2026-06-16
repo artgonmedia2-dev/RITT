@@ -15,7 +15,7 @@ export type NetworkRegion = {
 }
 
 export const networkRegions: NetworkRegion[] = [
-  { id: 'north-africa', nameKey: 'network.northAfrica', agents: 12, cities: ['Casablanca', 'Tanger', 'Alger', 'Tunis'], x: 48, y: 36 },
+  { id: 'north-africa', nameKey: 'network.northAfrica', agents: 12, cities: ['Casablanca', 'Tanger', 'Alger', 'Tunis'], x: 51, y: 35 },
   { id: 'west-africa', nameKey: 'network.westAfrica', agents: 8, cities: ['Dakar', 'Abidjan', 'Lagos', 'Accra'], x: 40, y: 52 },
   { id: 'central-africa', nameKey: 'network.centralAfrica', agents: 5, cities: ['Douala', 'Libreville', 'Brazzaville'], x: 52, y: 60 },
   { id: 'europe', nameKey: 'network.europe', agents: 25, cities: ['Marseille', 'Barcelone', 'Rotterdam', 'Hambourg'], x: 50, y: 22 },

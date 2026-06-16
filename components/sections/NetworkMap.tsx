@@ -7,8 +7,8 @@ import { MapPin, Users } from 'lucide-react'
 import { networkRegions, NetworkRegion } from '@/lib/data'
 import SectionTitle from '@/components/shared/SectionTitle'
 
-// Morocco HQ anchor — Casablanca (~8°W, 33.6°N) mapped to this SVG's equirectangular space
-const MOROCCO = { x: 47, y: 35 }
+// Morocco HQ anchor — Casablanca (westernmost North Africa, ~8°W 33.6°N)
+const MOROCCO = { x: 45, y: 37 }
 
 // Convert % coords to world-map-dots.svg viewBox (0 0 2100 1312.5)
 const toSvg = (x: number, y: number) => ({ x: x * 21, y: y * 13.125 })
