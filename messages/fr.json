@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "network": "Réseau",
+    "tracking": "Tracking",
+    "blog": "Blog",
+    "quote": "Devis",
+    "contact": "Contact",
+    "seaFreight": "Sea Freight",
+    "airFreight": "Air Freight",
+    "roadFreight": "Road Freight",
+    "transitCustoms": "Transit & Customs",
+    "supplyChain": "Supply Chain",
+    "importExport": "Import / Export"
+  },
+  "hero": {
+    "title": "Votre Partenaire Freight Forwarder au Maroc et en Afrique",
+    "subtitle": "Sea Freight • Air Freight • Road Freight • Transit & Customs • Supply Chain",
+    "cta_quote": "Demander un devis",
+    "cta_phone": "Appelez-nous",
+    "badge_network": "Réseau mondial",
+    "badge_modes": "3 modes de transport",
+    "badge_support": "Support 24h/7j",
+    "phone": "+212 5XX XX XX XX"
+  },
+  "stats": {
+    "title": "RITT en chiffres",
+    "years": "ans d'expérience",
+    "countries": "pays couverts",
+    "shipments": "shipments / an",
+    "ontime": "on-time delivery"
+  },
+  "network": {
+    "title": "Notre Réseau Mondial",
+    "subtitle": "Agents affiliés en Afrique et dans le monde entier pour une couverture logistique complète",
+    "northAfrica": "Afrique du Nord",
+    "westAfrica": "Afrique de l'Ouest",
+    "centralAfrica": "Afrique Centrale",
+    "europe": "Europe",
+    "asia": "Asie",
+    "americas": "Amériques",
+    "agents": "agents"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Des solutions logistiques complètes adaptées à vos besoins",
+    "discover": "Découvrir",
+    "seaFreight": {
+      "title": "Sea Freight",
+      "desc": "FCL, LCL, Breakbulk, Conteneurs spéciaux",
+      "features": ["FCL / LCL", "Conteneurs", "Breakbulk", "Ro-Ro"]
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "desc": "Express, Charter, Consolidation aérienne",
+      "features": ["Express cargo", "Charter", "Consolidation", "Périlleuses"]
+    },
+    "roadFreight": {
+      "title": "Road Freight",
+      "desc": "Transport routier national et international",
+      "features": ["National", "International", "Groupage", "FTL / LTL"]
+    },
+    "transitCustoms": {
+      "title": "Transit & Customs",
+      "desc": "Dédouanement, documentation, conseil douanier",
+      "features": ["Dédouanement", "Documentation", "Conseil", "Régimes suspensifs"]
+    },
+    "supplyChain": {
+      "title": "Supply Chain",
+      "desc": "Warehousing, distribution, gestion des stocks",
+      "features": ["Warehousing", "Distribution", "Inventory", "Cross-docking"]
+    },
+    "importExport": {
+      "title": "Import / Export",
+      "desc": "Logistique import & export, trade consulting",
+      "features": ["Export logistique", "Import logistique", "Trade consulting", "Incoterms"]
+    }
+  },
+  "why": {
+    "title": "Pourquoi choisir RITT ?",
+    "subtitle": "Notre engagement envers l'excellence logistique",
+    "network": {
+      "title": "Réseau Global",
+      "desc": "Agents affiliés en Afrique, Europe, Asie et Amériques pour une couverture mondiale"
+    },
+    "expertise": {
+      "title": "Expertise Locale",
+      "desc": "Connaissance approfondie du marché marocain et des réglementations douanières africaines"
+    },
+    "reactivity": {
+      "title": "Réactivité 24/7",
+      "desc": "Suivi en temps réel et support disponible 24h/7j pour toutes vos urgences logistiques"
+    },
+    "custom": {
+      "title": "Solutions Sur Mesure",
+      "desc": "Services adaptés à votre secteur d'activité, volume et contraintes spécifiques"
+    },
+    "security": {
+      "title": "Sécurité Garantie",
+      "desc": "Assurance cargo complète et traçabilité totale de vos marchandises du départ à l'arrivée"
+    },
+    "price": {
+      "title": "Tarifs Compétitifs",
+      "desc": "Transparence tarifaire totale, sans frais cachés, avec les meilleurs taux du marché"
+    }
+  },
+  "process": {
+    "title": "Notre Processus",
+    "subtitle": "5 étapes simples pour une logistique sans souci",
+    "step1": { "num": "01", "title": "Demande", "desc": "Contactez-nous via le formulaire ou par téléphone" },
+    "step2": { "num": "02", "title": "Devis", "desc": "Réception d'un devis clair et détaillé sous 24h" },
+    "step3": { "num": "03", "title": "Planification", "desc": "Sélection de la route et du mode de transport optimal" },
+    "step4": { "num": "04", "title": "Exécution", "desc": "Prise en charge et acheminement de vos marchandises" },
+    "step5": { "num": "05", "title": "Suivi", "desc": "Tracking en temps réel et rapport de livraison" },
+    "cta": "Demander un devis gratuit"
+  },
+  "tracking": {
+    "title": "Suivez votre Shipment",
+    "subtitle": "Entrez votre numéro de BL, AWB ou référence",
+    "placeholder": "Ex: RITT-2026-001234",
+    "btn": "Tracker",
+    "example": "Exemple :",
+    "support": "Support :",
+    "resultTitle": "Détails du Shipment",
+    "origin": "Origine",
+    "destination": "Destination",
+    "status": "Statut",
+    "estimated": "Livraison estimée",
+    "statusInTransit": "EN TRANSIT",
+    "statusDelivered": "LIVRÉ",
+    "statusPending": "EN ATTENTE",
+    "notFound": "Aucun résultat trouvé pour ce numéro.",
+    "contactSupport": "Contacter le support",
+    "receiveUpdates": "Recevoir les mises à jour"
+  },
+  "testimonials": {
+    "title": "Ils nous font confiance",
+    "subtitle": "Des clients satisfaits partout en Afrique et dans le monde"
+  },
+  "cta": {
+    "title": "Besoin d'un partenaire logistique ?",
+    "subtitle": "Demandez votre devis gratuit — Réponse sous 24h",
+    "quote": "Devis Gratuit",
+    "phone": "Appelez-nous"
+  },
+  "footer": {
+    "tagline": "Freight Forwarder — Maroc & Afrique",
+    "services": "Services",
+    "network": "Réseau",
+    "contact": "Contact",
+    "legal": "Légal",
+    "cgv": "CGV",
+    "privacy": "Politique de confidentialité",
+    "mentions": "Mentions légales",
+    "rights": "Tous droits réservés",
+    "address": "Casablanca, Maroc",
+    "hours": "Lun–Sam 8h–20h",
+    "email": "contact@ritt.ma"
+  },
+  "wizard": {
+    "title": "Demander un Devis",
+    "step1": "Type de service",
+    "step2": "Détails shipment",
+    "step3": "Conditions",
+    "step4": "Coordonnées",
+    "prev": "Précédent",
+    "next": "Continuer",
+    "submit": "Envoyer ma demande",
+    "selectService": "Sélectionnez un service",
+    "origin": "Pays d'origine",
+    "destination": "Pays de destination",
+    "weight": "Poids (kg)",
+    "dimensions": "Dimensions",
+    "length": "Longueur",
+    "width": "Largeur",
+    "height": "Hauteur",
+    "goodsType": "Type de marchandise",
+    "incoterm": "Incoterm",
+    "urgency": "Urgence",
+    "standard": "Standard",
+    "express": "Express",
+    "urgent": "Urgent",
+    "insurance": "Assurance cargo",
+    "yes": "Oui",
+    "no": "Non",
+    "company": "Société",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "rgpd": "J'accepte la politique de confidentialité",
+    "successTitle": "Merci ! Votre demande a été envoyée.",
+    "successDesc": "Notre équipe vous recontactera sous 24h avec une offre personnalisée.",
+    "newQuote": "Nouvelle demande",
+    "backHome": "Retour à l'accueil",
+    "notes": "Remarques complémentaires"
+  },
+  "blog": {
+    "title": "Actualités & Insights",
+    "subtitle": "Tendances logistiques, actualités du secteur et conseils pratiques",
+    "readMore": "Lire l'article",
+    "publishedOn": "Publié le",
+    "category": "Catégorie",
+    "backToBlog": "Retour au blog"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Notre équipe est disponible pour répondre à toutes vos questions",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer",
+    "successMsg": "Message envoyé ! Nous vous répondrons sous 24h.",
+    "address": "Adresse",
+    "addressValue": "Casablanca, Maroc",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "Email",
+    "hoursLabel": "Horaires",
+    "hoursValue": "Lun–Sam 8h–20h"
+  },
+  "legal": {
+    "title": "Mentions Légales",
+    "company": "Informations Société",
+    "companyName": "Raison sociale",
+    "companyAddress": "Siège social",
+    "contact": "Contact",
+    "editor": "Éditeur du site",
+    "host": "Hébergement",
+    "ip": "Propriété intellectuelle",
+    "data": "Données personnelles",
+    "cookies": "Cookies",
+    "law": "Droit applicable"
+  },
+  "meta": {
+    "home": {
+      "title": "RITT — Freight Forwarder Maroc & Afrique | Sea, Air, Road Freight",
+      "description": "RITT, Régie Internationale de Transport et Transit, votre partenaire logistique au Maroc et en Afrique. Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain."
+    },
+    "services": {
+      "title": "Nos Services Logistiques — RITT",
+      "description": "Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain, Import/Export. Solutions complètes par RITT."
+    },
+    "tracking": {
+      "title": "Suivi Shipment — RITT",
+      "description": "Suivez en temps réel vos expéditions avec RITT. Entrez votre numéro BL ou AWB."
+    },
+    "quote": {
+      "title": "Demander un Devis — RITT",
+      "description": "Obtenez un devis personnalisé pour vos besoins en transport et transit avec RITT."
+    },
+    "blog": {
+      "title": "Blog Logistique — RITT",
+      "description": "Actualités, tendances et conseils logistiques par les experts RITT."
+    },
+    "contact": {
+      "title": "Contact — RITT",
+      "description": "Contactez RITT pour vos besoins en freight forwarding. Réponse sous 24h."
+    }
+  }
+}

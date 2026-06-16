@@ -1,0 +1,263 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "network": "Network",
+    "tracking": "Tracking",
+    "blog": "Blog",
+    "quote": "Quote",
+    "contact": "Contact",
+    "seaFreight": "Sea Freight",
+    "airFreight": "Air Freight",
+    "roadFreight": "Road Freight",
+    "transitCustoms": "Transit & Customs",
+    "supplyChain": "Supply Chain",
+    "importExport": "Import / Export"
+  },
+  "hero": {
+    "title": "Your Freight Forwarding Partner in Morocco and Africa",
+    "subtitle": "Sea Freight • Air Freight • Road Freight • Transit & Customs • Supply Chain",
+    "cta_quote": "Get a Quote",
+    "cta_phone": "Call Us",
+    "badge_network": "Global Network",
+    "badge_modes": "3 transport modes",
+    "badge_support": "24/7 Support",
+    "phone": "+212 5XX XX XX XX"
+  },
+  "stats": {
+    "title": "RITT by the Numbers",
+    "years": "years of experience",
+    "countries": "countries covered",
+    "shipments": "shipments / year",
+    "ontime": "on-time delivery"
+  },
+  "network": {
+    "title": "Our Global Network",
+    "subtitle": "Affiliated agents across Africa and worldwide for complete logistics coverage",
+    "northAfrica": "North Africa",
+    "westAfrica": "West Africa",
+    "centralAfrica": "Central Africa",
+    "europe": "Europe",
+    "asia": "Asia",
+    "americas": "Americas",
+    "agents": "agents"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Complete logistics solutions tailored to your needs",
+    "discover": "Discover",
+    "seaFreight": {
+      "title": "Sea Freight",
+      "desc": "FCL, LCL, Breakbulk, Special Containers",
+      "features": ["FCL / LCL", "Containers", "Breakbulk", "Ro-Ro"]
+    },
+    "airFreight": {
+      "title": "Air Freight",
+      "desc": "Express, Charter, Air Consolidation",
+      "features": ["Express cargo", "Charter", "Consolidation", "Dangerous goods"]
+    },
+    "roadFreight": {
+      "title": "Road Freight",
+      "desc": "National and international road transport",
+      "features": ["National", "International", "Groupage", "FTL / LTL"]
+    },
+    "transitCustoms": {
+      "title": "Transit & Customs",
+      "desc": "Customs clearance, documentation, advisory",
+      "features": ["Customs clearance", "Documentation", "Advisory", "Suspended regimes"]
+    },
+    "supplyChain": {
+      "title": "Supply Chain",
+      "desc": "Warehousing, distribution, inventory management",
+      "features": ["Warehousing", "Distribution", "Inventory", "Cross-docking"]
+    },
+    "importExport": {
+      "title": "Import / Export",
+      "desc": "Import & export logistics, trade consulting",
+      "features": ["Export logistics", "Import logistics", "Trade consulting", "Incoterms"]
+    }
+  },
+  "why": {
+    "title": "Why Choose RITT?",
+    "subtitle": "Our commitment to logistics excellence",
+    "network": {
+      "title": "Global Network",
+      "desc": "Affiliated agents in Africa, Europe, Asia and the Americas for worldwide coverage"
+    },
+    "expertise": {
+      "title": "Local Expertise",
+      "desc": "Deep knowledge of the Moroccan market and African customs regulations"
+    },
+    "reactivity": {
+      "title": "24/7 Reactivity",
+      "desc": "Real-time tracking and support available 24/7 for all your logistics emergencies"
+    },
+    "custom": {
+      "title": "Custom Solutions",
+      "desc": "Services tailored to your industry, volume and specific constraints"
+    },
+    "security": {
+      "title": "Guaranteed Security",
+      "desc": "Full cargo insurance and complete traceability from origin to destination"
+    },
+    "price": {
+      "title": "Competitive Rates",
+      "desc": "Total pricing transparency, no hidden fees, with the best market rates"
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "subtitle": "5 simple steps for worry-free logistics",
+    "step1": { "num": "01", "title": "Request", "desc": "Contact us via the form or by phone" },
+    "step2": { "num": "02", "title": "Quote", "desc": "Receive a clear, detailed quote within 24h" },
+    "step3": { "num": "03", "title": "Planning", "desc": "Selection of optimal route and transport mode" },
+    "step4": { "num": "04", "title": "Execution", "desc": "Pickup and transportation of your goods" },
+    "step5": { "num": "05", "title": "Tracking", "desc": "Real-time tracking and delivery report" },
+    "cta": "Request a Free Quote"
+  },
+  "tracking": {
+    "title": "Track Your Shipment",
+    "subtitle": "Enter your BL, AWB or reference number",
+    "placeholder": "Ex: RITT-2026-001234",
+    "btn": "Track",
+    "example": "Example:",
+    "support": "Support:",
+    "resultTitle": "Shipment Details",
+    "origin": "Origin",
+    "destination": "Destination",
+    "status": "Status",
+    "estimated": "Estimated Delivery",
+    "statusInTransit": "IN TRANSIT",
+    "statusDelivered": "DELIVERED",
+    "statusPending": "PENDING",
+    "notFound": "No results found for this number.",
+    "contactSupport": "Contact Support",
+    "receiveUpdates": "Receive Updates"
+  },
+  "testimonials": {
+    "title": "They Trust Us",
+    "subtitle": "Satisfied clients across Africa and worldwide"
+  },
+  "cta": {
+    "title": "Need a Logistics Partner?",
+    "subtitle": "Request your free quote — Response within 24h",
+    "quote": "Free Quote",
+    "phone": "Call Us"
+  },
+  "footer": {
+    "tagline": "Freight Forwarder — Morocco & Africa",
+    "services": "Services",
+    "network": "Network",
+    "contact": "Contact",
+    "legal": "Legal",
+    "cgv": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "mentions": "Legal Notice",
+    "rights": "All rights reserved",
+    "address": "Casablanca, Morocco",
+    "hours": "Mon–Sat 8am–8pm",
+    "email": "contact@ritt.ma"
+  },
+  "wizard": {
+    "title": "Request a Quote",
+    "step1": "Service Type",
+    "step2": "Shipment Details",
+    "step3": "Conditions",
+    "step4": "Contact Info",
+    "prev": "Previous",
+    "next": "Continue",
+    "submit": "Send My Request",
+    "selectService": "Select a service",
+    "origin": "Country of Origin",
+    "destination": "Destination Country",
+    "weight": "Weight (kg)",
+    "dimensions": "Dimensions",
+    "length": "Length",
+    "width": "Width",
+    "height": "Height",
+    "goodsType": "Goods Type",
+    "incoterm": "Incoterm",
+    "urgency": "Urgency",
+    "standard": "Standard",
+    "express": "Express",
+    "urgent": "Urgent",
+    "insurance": "Cargo Insurance",
+    "yes": "Yes",
+    "no": "No",
+    "company": "Company",
+    "lastName": "Last Name",
+    "firstName": "First Name",
+    "email": "Email",
+    "phone": "Phone",
+    "rgpd": "I accept the privacy policy",
+    "successTitle": "Thank you! Your request has been sent.",
+    "successDesc": "Our team will contact you within 24h with a personalized offer.",
+    "newQuote": "New Request",
+    "backHome": "Back to Home",
+    "notes": "Additional Notes"
+  },
+  "blog": {
+    "title": "News & Insights",
+    "subtitle": "Logistics trends, industry news and practical tips",
+    "readMore": "Read Article",
+    "publishedOn": "Published on",
+    "category": "Category",
+    "backToBlog": "Back to Blog"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Our team is available to answer all your questions",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "successMsg": "Message sent! We will reply within 24h.",
+    "address": "Address",
+    "addressValue": "Casablanca, Morocco",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "hoursLabel": "Hours",
+    "hoursValue": "Mon–Sat 8am–8pm"
+  },
+  "legal": {
+    "title": "Legal Notice",
+    "company": "Company Information",
+    "companyName": "Legal name",
+    "companyAddress": "Registered address",
+    "contact": "Contact",
+    "editor": "Website Editor",
+    "host": "Hosting",
+    "ip": "Intellectual Property",
+    "data": "Personal Data",
+    "cookies": "Cookies",
+    "law": "Applicable Law"
+  },
+  "meta": {
+    "home": {
+      "title": "RITT — Freight Forwarder Morocco & Africa | Sea, Air, Road Freight",
+      "description": "RITT, International Transport and Transit, your logistics partner in Morocco and Africa. Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain."
+    },
+    "services": {
+      "title": "Our Logistics Services — RITT",
+      "description": "Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain, Import/Export. Complete solutions by RITT."
+    },
+    "tracking": {
+      "title": "Shipment Tracking — RITT",
+      "description": "Track your shipments in real time with RITT. Enter your BL or AWB number."
+    },
+    "quote": {
+      "title": "Request a Quote — RITT",
+      "description": "Get a personalized quote for your transport and transit needs with RITT."
+    },
+    "blog": {
+      "title": "Logistics Blog — RITT",
+      "description": "News, trends and logistics tips from RITT experts."
+    },
+    "contact": {
+      "title": "Contact — RITT",
+      "description": "Contact RITT for your freight forwarding needs. Response within 24h."
+    }
+  }
+}
