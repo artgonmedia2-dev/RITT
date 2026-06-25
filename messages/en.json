@@ -22,7 +22,7 @@
     "badge_network": "Global Network",
     "badge_modes": "3 transport modes",
     "badge_support": "24/7 Support",
-    "phone": "+212 5XX XX XX XX"
+    "phone": "+212 661 71 84 18"
   },
   "stats": {
     "title": "RITT by the Numbers",
@@ -156,7 +156,7 @@
     "rights": "All rights reserved",
     "address": "Casablanca, Morocco",
     "hours": "Mon–Sat 8am–8pm",
-    "email": "contact@ritt.ma"
+    "email": "elbijri.othmane@gmail.com"
   },
   "wizard": {
     "title": "Request a Quote",
@@ -215,7 +215,7 @@
     "send": "Send",
     "successMsg": "Message sent! We will reply within 24h.",
     "address": "Address",
-    "addressValue": "Casablanca, Morocco",
+    "addressValue": "84 Bd Bahmad, Rce Salam, 3ème étage, appt 6, Casablanca 20000 MA",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
     "hoursLabel": "Hours",

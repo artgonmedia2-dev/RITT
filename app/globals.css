@@ -105,16 +105,59 @@
     padding-right: 1.5rem;
   }
 
+  /* ─── Enhanced Card Hover with Glassmorphism ─── */
   .card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(26, 35, 126, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(26, 35, 126, 0.15), 0 0 20px rgba(0, 188, 212, 0.08);
   }
 
-  /* Animated underline */
+  /* ─── Glassmorphism cards ─── */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card-dark {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* ─── Premium Button Glow ─── */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-glow:hover::before {
+    left: 100%;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 25px rgba(0, 188, 212, 0.4), 0 0 50px rgba(0, 188, 212, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* ─── Animated underline ─── */
   .link-underline {
     position: relative;
   }
@@ -126,32 +169,60 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: #00bcd4;
+    background: linear-gradient(90deg, #00bcd4, #4dd0e1);
     transition: width 0.3s ease;
+    border-radius: 1px;
   }
 
   .link-underline:hover::after {
     width: 100%;
   }
 
-  /* Pulse animation for tracking */
+  /* ─── Pulse animation for tracking ─── */
   .pulse-current {
     animation: pulse-ring 2s infinite;
   }
 
   @keyframes pulse-ring {
     0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(0, 188, 212, 0); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 188, 212, 0); }
     100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0); }
   }
 
-  /* Backdrop blur fix */
-  .header-blur {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  /* ─── Floating animation ─── */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
   }
 
-  /* Custom scrollbar */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ─── Gradient text ─── */
+  .text-gradient {
+    background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ─── Section divider accent line ─── */
+  .section-accent {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #00bcd4, #4dd0e1);
+    border-radius: 2px;
+    margin: 0 auto 1rem;
+  }
+
+  /* ─── Backdrop blur fix ─── */
+  .header-blur {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* ─── Custom scrollbar ─── */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -161,11 +232,11 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1a237e;
+    background: linear-gradient(180deg, #1a237e, #00bcd4);
     border-radius: 3px;
   }
 
-  /* Skip to content */
+  /* ─── Skip to content ─── */
   .skip-to-content {
     position: absolute;
     top: -100%;
@@ -180,5 +251,13 @@
 
   .skip-to-content:focus {
     top: 0;
+  }
+
+  /* ─── Progress bar for tracking ─── */
+  .tracking-progress {
+    background: linear-gradient(90deg, #00bcd4, #4dd0e1);
+    border-radius: 4px;
+    height: 4px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

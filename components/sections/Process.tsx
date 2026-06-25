@@ -28,8 +28,16 @@ export default function Process() {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Connecting line (desktop) */}
-          <div className="hidden lg:block absolute top-10 h-0.5 bg-gradient-to-r from-transparent via-navy-100 to-transparent" style={{ left: '8%', right: '8%' }} aria-hidden="true" />
+          {/* Connecting line (desktop) — gradient */}
+          <div
+            className="hidden lg:block absolute top-10 h-0.5"
+            style={{
+              left: '8%',
+              right: '8%',
+              background: 'linear-gradient(90deg, transparent, #c5cae9, #00bcd4, #c5cae9, transparent)',
+            }}
+            aria-hidden="true"
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {steps.map(({ numKey, titleKey, descKey, icon: Icon }, i) => (
@@ -38,18 +46,18 @@ export default function Process() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative flex flex-col items-center text-center"
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="group relative flex flex-col items-center text-center"
               >
                 {/* Step circle */}
-                <div className="relative z-10 w-20 h-20 rounded-full bg-navy flex flex-col items-center justify-center mb-4 shadow-lg shadow-navy/20">
+                <div className="relative z-10 w-20 h-20 rounded-full bg-navy flex flex-col items-center justify-center mb-4 shadow-lg shadow-navy/20 group-hover:shadow-xl group-hover:shadow-brand/25 group-hover:scale-110 transition-all duration-300">
                   <Icon className="w-6 h-6 text-brand mb-0.5" />
                   <span className="text-xs font-bold text-white/60">
                     {t(numKey as Parameters<typeof t>[0])}
                   </span>
                 </div>
 
-                <h3 className="font-bold text-navy text-lg mb-2">
+                <h3 className="font-bold text-navy text-lg mb-2 group-hover:text-brand transition-colors duration-300">
                   {t(titleKey as Parameters<typeof t>[0])}
                 </h3>
                 <p className="text-sm text-navy-400 leading-relaxed">
@@ -58,7 +66,7 @@ export default function Process() {
 
                 {/* Arrow (mobile) */}
                 {i < steps.length - 1 && (
-                  <div className="lg:hidden mt-4 text-navy-200" aria-hidden="true">▼</div>
+                  <div className="lg:hidden mt-4 text-brand/40" aria-hidden="true">▼</div>
                 )}
               </motion.div>
             ))}
@@ -75,7 +83,7 @@ export default function Process() {
         >
           <Link
             href={`/${locale}/devis`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-navy text-white font-bold rounded-full text-base hover:bg-navy-light transition-all hover:shadow-lg hover:shadow-navy/30"
+            className="btn-glow inline-flex items-center gap-2 px-8 py-4 bg-navy text-white font-bold rounded-full text-base hover:bg-navy-light transition-all hover:shadow-lg hover:shadow-navy/30 hover:scale-105"
           >
             <FileText className="w-5 h-5" />
             {t('process.cta')}

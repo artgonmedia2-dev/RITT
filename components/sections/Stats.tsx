@@ -45,14 +45,20 @@ export default function Stats() {
   const t = useTranslations()
 
   return (
-    <section className="py-20" style={{ background: 'linear-gradient(135deg, #1a237e 0%, #283593 100%)' }}>
-      <div className="container-ritt">
+    <section className="py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a237e 0%, #283593 100%)' }}>
+      {/* Decorative background circles */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-brand/5 blur-3xl" />
+        <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-brand/5 blur-3xl" />
+      </div>
+
+      <div className="container-ritt relative">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center text-3xl md:text-4xl font-bold text-white mb-14"
+          className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-14 tracking-tight"
         >
           {t('stats.title')}
         </motion.h2>
@@ -68,16 +74,16 @@ export default function Stats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`flex flex-col items-center text-center px-6 py-8 ${
+                className={`group flex flex-col items-center text-center px-6 py-8 ${
                   !isLast ? 'lg:border-r border-white/10' : ''
                 }`}
               >
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-brand" />
+                <div className="w-14 h-14 rounded-xl glass-card-dark flex items-center justify-center mb-4 group-hover:bg-white/10 transition-all duration-300">
+                  <Icon className="w-7 h-7 text-brand group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 {/* Number */}
-                <div className="text-4xl md:text-5xl lg:text-6xl font-black text-brand mb-2 tabular-nums">
+                <div className="text-4xl md:text-5xl lg:text-6xl font-black text-gradient mb-2 tabular-nums">
                   <AnimatedCounter
                     target={stat.value}
                     suffix={stat.suffix}

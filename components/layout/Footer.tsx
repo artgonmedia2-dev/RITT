@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react'
 import { PHONE, EMAIL, ADDRESS } from '@/lib/constants'
 
 export default function Footer({ locale }: { locale: string }) {
@@ -28,13 +28,19 @@ export default function Footer({ locale }: { locale: string }) {
   ]
 
   return (
-    <footer className="gradient-dark text-white" role="contentinfo">
-      <div className="container-ritt py-16">
+    <footer className="gradient-dark text-white relative overflow-hidden" role="contentinfo">
+      {/* Decorative background */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-brand/5 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 w-56 h-56 rounded-full bg-brand/3 blur-3xl" />
+      </div>
+
+      <div className="container-ritt py-16 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href={base} className="inline-block mb-4">
-              <div className="bg-white rounded-xl px-4 py-2 inline-block">
+            <Link href={base} className="inline-block mb-4 group">
+              <div className="bg-white rounded-xl px-4 py-2 inline-block group-hover:shadow-lg group-hover:shadow-brand/10 transition-all duration-300">
                 <Image
                   src="/images/logo.jpg"
                   alt="RITT — Régie Internationale de Transport et Transit"
@@ -50,21 +56,21 @@ export default function Footer({ locale }: { locale: string }) {
             <div className="flex flex-col gap-3 text-sm">
               <a
                 href={`tel:${PHONE.replace(/\s/g, '')}`}
-                className="flex items-center gap-2 text-white/70 hover:text-brand transition-colors"
+                className="group flex items-center gap-2 text-white/70 hover:text-brand transition-colors"
               >
-                <Phone className="w-4 h-4 text-brand flex-shrink-0" />
+                <Phone className="w-4 h-4 text-brand flex-shrink-0 group-hover:scale-110 transition-transform" />
                 {PHONE}
               </a>
               <a
                 href={`mailto:${EMAIL}`}
-                className="flex items-center gap-2 text-white/70 hover:text-brand transition-colors"
+                className="group flex items-center gap-2 text-white/70 hover:text-brand transition-colors"
               >
-                <Mail className="w-4 h-4 text-brand flex-shrink-0" />
+                <Mail className="w-4 h-4 text-brand flex-shrink-0 group-hover:scale-110 transition-transform" />
                 {EMAIL}
               </a>
-              <div className="flex items-center gap-2 text-white/70">
-                <MapPin className="w-4 h-4 text-brand flex-shrink-0" />
-                {ADDRESS}
+              <div className="flex items-start gap-2 text-white/70">
+                <MapPin className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
+                <span className="leading-snug">{ADDRESS}</span>
               </div>
               <div className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-brand flex-shrink-0" />
@@ -83,9 +89,10 @@ export default function Footer({ locale }: { locale: string }) {
                 <li key={s.slug}>
                   <Link
                     href={`${base}/services/${s.slug}`}
-                    className="text-sm text-white/60 hover:text-brand transition-colors"
+                    className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors"
                   >
                     {t(s.key as Parameters<typeof t>[0])}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
               ))}
@@ -102,9 +109,10 @@ export default function Footer({ locale }: { locale: string }) {
                 <li key={n.label}>
                   <Link
                     href={`${base}/reseau`}
-                    className="text-sm text-white/60 hover:text-brand transition-colors"
+                    className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors"
                   >
                     {n.label}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
               ))}
@@ -118,33 +126,39 @@ export default function Footer({ locale }: { locale: string }) {
             </h3>
             <ul className="flex flex-col gap-2 mb-6">
               <li>
-                <Link href={`${base}/mentions-legales`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/mentions-legales`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('footer.mentions')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href={`${base}/mentions-legales`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/mentions-legales`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('footer.privacy')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href={`${base}/contact`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/contact`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('nav.contact')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href={`${base}/blog`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/blog`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('nav.blog')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href={`${base}/tracking`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/tracking`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('nav.tracking')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
-                <Link href={`${base}/devis`} className="text-sm text-white/60 hover:text-brand transition-colors">
+                <Link href={`${base}/devis`} className="group flex items-center gap-1 text-sm text-white/60 hover:text-brand transition-colors">
                   {t('nav.quote')}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
             </ul>
@@ -154,7 +168,7 @@ export default function Footer({ locale }: { locale: string }) {
               {['FIATA', 'IATA', 'ISO'].map((cert) => (
                 <span
                   key={cert}
-                  className="text-xs border border-white/20 text-white/50 px-2 py-1 rounded"
+                  className="text-xs border border-white/20 text-white/50 px-3 py-1.5 rounded-lg hover:border-brand/40 hover:text-brand/70 transition-colors cursor-default"
                 >
                   {cert}
                 </span>

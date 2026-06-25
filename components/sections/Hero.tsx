@@ -41,11 +41,36 @@ export default function Hero() {
         aria-hidden="true"
         style={{
           background:
-            'linear-gradient(105deg, rgba(13,22,66,0.92) 0%, rgba(26,35,126,0.82) 50%, rgba(40,53,147,0.65) 100%)',
+            'linear-gradient(105deg, rgba(13,22,66,0.94) 0%, rgba(26,35,126,0.85) 50%, rgba(40,53,147,0.68) 100%)',
         }}
       />
 
-      {/* Animated SVG connection lines (kept as subtle overlay) */}
+      {/* Animated floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 rounded-full bg-brand/30"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.3, 0.7, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.8,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Animated SVG connection lines */}
       <div className="absolute inset-0 opacity-15 pointer-events-none" aria-hidden="true">
         <svg viewBox="0 0 1200 600" className="w-full h-full">
           <g stroke="#00bcd4" strokeWidth="1" fill="none">
@@ -111,14 +136,14 @@ export default function Hero() {
           <div className="flex flex-wrap gap-4 mb-12">
             <Link
               href={`${base}/devis`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand text-white font-bold rounded-full text-base hover:bg-brand-dark transition-all hover:shadow-lg hover:shadow-brand/40 hover:-translate-y-0.5"
+              className="btn-glow inline-flex items-center gap-2 px-8 py-4 bg-brand text-white font-bold rounded-full text-base hover:bg-brand-dark transition-all hover:shadow-lg hover:shadow-brand/40 hover:-translate-y-0.5 hover:scale-105"
             >
               <FileText className="w-5 h-5" />
               {t('hero.cta_quote')}
             </Link>
             <a
               href={`tel:${PHONE.replace(/\s/g, '')}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/25 text-white font-bold rounded-full text-base hover:bg-white/20 transition-all backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 border border-white/25 text-white font-bold rounded-full text-base hover:bg-white/20 transition-all backdrop-blur-sm hover:border-brand/50 hover:scale-105"
             >
               <Phone className="w-5 h-5" />
               {PHONE}
@@ -133,7 +158,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 + i * 0.15 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/85 text-sm backdrop-blur-sm"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white/85 text-sm backdrop-blur-sm hover:bg-white/15 hover:border-brand/30 transition-all cursor-default"
               >
                 <Icon className="w-4 h-4 text-brand" />
                 {t(key as Parameters<typeof t>[0])}

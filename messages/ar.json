@@ -22,7 +22,7 @@
     "badge_network": "شبكة عالمية",
     "badge_modes": "٣ وسائل نقل",
     "badge_support": "دعم ٢٤/٧",
-    "phone": "+212 5XX XX XX XX"
+    "phone": "+212 661 71 84 18"
   },
   "stats": {
     "title": "RITT بالأرقام",
@@ -156,7 +156,7 @@
     "rights": "جميع الحقوق محفوظة",
     "address": "الدار البيضاء، المغرب",
     "hours": "الاثنين–السبت ٨ص–٨م",
-    "email": "contact@ritt.ma"
+    "email": "elbijri.othmane@gmail.com"
   },
   "wizard": {
     "title": "طلب عرض سعر",
@@ -215,7 +215,7 @@
     "send": "إرسال",
     "successMsg": "تم إرسال الرسالة! سنرد عليك في غضون ٢٤ ساعة.",
     "address": "العنوان",
-    "addressValue": "الدار البيضاء، المغرب",
+    "addressValue": "84 Bd Bahmad, Rce Salam, 3ème étage, appt 6, Casablanca 20000 MA",
     "phoneLabel": "الهاتف",
     "emailLabel": "البريد الإلكتروني",
     "hoursLabel": "ساعات العمل",
