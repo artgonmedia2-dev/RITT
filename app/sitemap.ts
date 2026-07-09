@@ -4,6 +4,7 @@ import { SERVICE_SLUGS } from '@/lib/constants'
 import { blogPosts } from '@/lib/data'
 
 const BASE_URL = 'https://ritt.ma'
+export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = []
