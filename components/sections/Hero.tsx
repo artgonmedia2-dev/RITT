@@ -165,6 +165,24 @@ export default function Hero() {
               </motion.div>
             ))}
           </div>
+
+          {/* Trust bar */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-8 pt-8 border-t border-white/10"
+          >
+            <span className="text-white/30 text-xs uppercase tracking-widest">Certifié &amp; Membre</span>
+            {['FIATA', 'IATA', 'ISO 9001', 'AEO Maroc'].map((cert) => (
+              <span
+                key={cert}
+                className="text-white/55 text-xs font-medium px-3 py-1 rounded border border-white/15 hover:border-brand/30 hover:text-white/80 transition-colors cursor-default"
+              >
+                {cert}
+              </span>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
 

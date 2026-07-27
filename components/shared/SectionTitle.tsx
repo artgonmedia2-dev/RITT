@@ -20,14 +20,18 @@ export default function SectionTitle({ title, subtitle, light, center = true, cl
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={cn('mb-14', center && 'text-center', className)}
     >
-      {/* Accent line */}
-      <div className={cn('section-accent', !center && 'mx-0')} />
+      {/* Accent pill */}
+      <div className={cn('flex items-center gap-3 mb-4', center && 'justify-center')}>
+        <div className="h-px w-8 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #00bcd4)' }} />
+        <div className="w-2 h-2 rounded-full bg-brand" />
+        <div className="h-px w-8 rounded-full" style={{ background: 'linear-gradient(90deg, #00bcd4, transparent)' }} />
+      </div>
 
       <h2 className={cn('text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight', light ? 'text-white' : 'text-navy')}>
         {title}
       </h2>
       {subtitle && (
-        <p className={cn('text-lg max-w-2xl leading-relaxed', center && 'mx-auto', light ? 'text-white/70' : 'text-navy-400')}>
+        <p className={cn('text-base md:text-lg max-w-2xl leading-relaxed', center && 'mx-auto', light ? 'text-white/70' : 'text-gray-500')}>
           {subtitle}
         </p>
       )}
