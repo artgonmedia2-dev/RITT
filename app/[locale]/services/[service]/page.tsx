@@ -17,6 +17,16 @@ export async function generateStaticParams() {
   )
 }
 
+// Maps service slug to meta translation key
+const SERVICE_META: Record<string, string> = {
+  'sea-freight':      'seaFreight',
+  'air-freight':      'airFreight',
+  'road-freight':     'roadFreight',
+  'transit-customs':  'transitCustoms',
+  'supply-chain':     'supplyChain',
+  'import-export':    'importExport',
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,10 +36,23 @@ export async function generateMetadata({
   const t = await getTranslations({ locale })
   const serviceData = services.find((s) => s.id === service)
   if (!serviceData) return {}
-  const title = t(serviceData.titleKey as Parameters<typeof t>[0])
+
+  const metaKey = SERVICE_META[service]
+  const hasPerServiceMeta = metaKey && t.has(`meta.${metaKey}.title` as Parameters<typeof t>[0])
+
+  const title = hasPerServiceMeta
+    ? t(`meta.${metaKey}.title` as Parameters<typeof t>[0])
+    : `${t(serviceData.titleKey as Parameters<typeof t>[0])} — Transport International Maroc — RITT`
+
+  const description = hasPerServiceMeta
+    ? t(`meta.${metaKey}.description` as Parameters<typeof t>[0])
+    : t(serviceData.descKey as Parameters<typeof t>[0])
+
   return {
-    title: `${title} — RITT`,
-    description: t(serviceData.descKey as Parameters<typeof t>[0]),
+    title,
+    description,
+    alternates: { canonical: `https://ritt.ma/${locale}/services/${service}` },
+    openGraph: { title, description, type: 'website' },
   }
 }
 

@@ -15,14 +15,14 @@
     "importExport": "Import / Export"
   },
   "hero": {
-    "title": "Votre Partenaire Freight Forwarder au Maroc et en Afrique",
-    "subtitle": "Sea Freight • Air Freight • Road Freight • Transit & Customs • Supply Chain",
-    "cta_quote": "Demander un devis",
+    "title": "Votre Partenaire Transport International au Maroc et en Afrique",
+    "subtitle": "Transport maritime • Transports aériens • Transport routier Maroc-France • Dédouanement • Supply Chain",
+    "cta_quote": "Demander un devis gratuit",
     "cta_phone": "Appelez-nous",
-    "badge_network": "Réseau mondial",
+    "badge_network": "Réseau mondial 50+ pays",
     "badge_modes": "3 modes de transport",
     "badge_support": "Support 24h/7j",
-    "phone": "+212 661 71 84 18"
+    "phone": "05 22 35 68 35"
   },
   "stats": {
     "title": "RITT en chiffres",
@@ -43,38 +43,38 @@
     "agents": "agents"
   },
   "services": {
-    "title": "Nos Services",
-    "subtitle": "Des solutions logistiques complètes adaptées à vos besoins",
+    "title": "Nos Services de Transport & Logistique",
+    "subtitle": "Transport international complet — maritime, aérien, routier, dédouanement et supply chain depuis Casablanca",
     "discover": "Découvrir",
     "seaFreight": {
-      "title": "Sea Freight",
-      "desc": "FCL, LCL, Breakbulk, Conteneurs spéciaux",
-      "features": ["FCL / LCL", "Conteneurs", "Breakbulk", "Ro-Ro"]
+      "title": "Transport Maritime",
+      "desc": "Fret maritime international — FCL, LCL, Breakbulk, conteneurs spéciaux",
+      "features": ["FCL / LCL", "Conteneurs frigorifiques", "Breakbulk", "Ro-Ro"]
     },
     "airFreight": {
-      "title": "Air Freight",
-      "desc": "Express, Charter, Consolidation aérienne",
-      "features": ["Express cargo", "Charter", "Consolidation", "Périlleuses"]
+      "title": "Transport Aérien",
+      "desc": "Transports aériens express — fret aérien, charter, consolidation aérienne",
+      "features": ["Express cargo", "Charter aérien", "Consolidation", "Matières dangereuses"]
     },
     "roadFreight": {
-      "title": "Road Freight",
-      "desc": "Transport routier national et international",
-      "features": ["National", "International", "Groupage", "FTL / LTL"]
+      "title": "Transport Routier",
+      "desc": "Transport routier Maroc-France-Europe — groupage international, FTL, LTL",
+      "features": ["Transport Maroc-France", "Transport international", "Groupage routier", "FTL / LTL"]
     },
     "transitCustoms": {
-      "title": "Transit & Customs",
-      "desc": "Dédouanement, documentation, conseil douanier",
-      "features": ["Dédouanement", "Documentation", "Conseil", "Régimes suspensifs"]
+      "title": "Transit & Dédouanement",
+      "desc": "Dédouanement Maroc, transit douanier, documentation, conseil douanier",
+      "features": ["Dédouanement import/export", "Transit douanier", "Conseil douanier", "Régimes suspensifs"]
     },
     "supplyChain": {
       "title": "Supply Chain",
-      "desc": "Warehousing, distribution, gestion des stocks",
-      "features": ["Warehousing", "Distribution", "Inventory", "Cross-docking"]
+      "desc": "Logistique supply chain — warehousing, distribution, gestion des stocks Maroc",
+      "features": ["Entreposage Maroc", "Distribution", "Gestion des stocks", "Cross-docking"]
     },
     "importExport": {
       "title": "Import / Export",
-      "desc": "Logistique import & export, trade consulting",
-      "features": ["Export logistique", "Import logistique", "Trade consulting", "Incoterms"]
+      "desc": "Logistique import-export Maroc — trade consulting, incoterms, documentation",
+      "features": ["Export logistique", "Import logistique", "Conseil trade international", "Incoterms"]
     }
   },
   "why": {
@@ -145,7 +145,7 @@
     "phone": "Appelez-nous"
   },
   "footer": {
-    "tagline": "Freight Forwarder — Maroc & Afrique",
+    "tagline": "Transitaire & Freight Forwarder — Maroc & Afrique",
     "services": "Services",
     "network": "Réseau",
     "contact": "Contact",
@@ -156,7 +156,9 @@
     "rights": "Tous droits réservés",
     "address": "Casablanca, Maroc",
     "hours": "Lun–Sam 8h–20h",
-    "email": "elbijri.othmane@gmail.com"
+    "email": "contact@rittmaroc.com",
+    "phone": "Téléphone fixe",
+    "hoursLabel": "Horaires"
   },
   "wizard": {
     "title": "Demander un Devis",
@@ -236,28 +238,56 @@
   },
   "meta": {
     "home": {
-      "title": "RITT — Freight Forwarder Maroc & Afrique | Sea, Air, Road Freight",
-      "description": "RITT, Régie Internationale de Transport et Transit, votre partenaire logistique au Maroc et en Afrique. Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain."
+      "title": "RITT — Transport International Maroc | Freight Forwarder & Transitaire Casablanca",
+      "description": "RITT, expert en transport international au Maroc et en Afrique. Fret maritime FCL/LCL, transports aériens, transport routier Maroc-France, dédouanement et supply chain. Devis gratuit sous 24h."
     },
     "services": {
-      "title": "Nos Services Logistiques — RITT",
-      "description": "Sea Freight, Air Freight, Road Freight, Transit & Customs, Supply Chain, Import/Export. Solutions complètes par RITT."
+      "title": "Services Transport & Logistique Maroc — RITT | Transitaire Casablanca",
+      "description": "Transport maritime, transports aériens, transport routier Maroc-France, dédouanement Maroc et supply chain. Solutions logistiques complètes par RITT Casablanca."
+    },
+    "seaFreight": {
+      "title": "Transport Maritime Maroc | Fret Maritime FCL LCL — RITT Casablanca",
+      "description": "RITT, expert en transport maritime au Maroc. Fret maritime FCL, LCL, Breakbulk vers Europe, Asie et Amériques. Transitaire maritime Casablanca. Devis gratuit."
+    },
+    "airFreight": {
+      "title": "Transport Aérien Maroc | Fret Aérien Express & Charter — RITT",
+      "description": "RITT, spécialiste des transports aériens au Maroc. Fret aérien express, charter, consolidation aérienne depuis Casablanca vers le monde entier. Réponse sous 24h."
+    },
+    "roadFreight": {
+      "title": "Transport Routier Maroc France | Road Freight International — RITT",
+      "description": "RITT, expert en transport routier Maroc-France et Europe. FTL, LTL, groupage routier international depuis Casablanca. Spécialiste transport routier international."
+    },
+    "transitCustoms": {
+      "title": "Dédouanement Maroc | Transit Douanier Casablanca — RITT",
+      "description": "RITT, expert en dédouanement au Maroc. Transit douanier, conseil douanier, gestion formalités avec la douane, régimes suspensifs import-export. Casablanca."
+    },
+    "supplyChain": {
+      "title": "Logistique Supply Chain Maroc | Warehousing & Distribution — RITT",
+      "description": "Solutions supply chain complètes au Maroc avec RITT. Warehousing, distribution, gestion des stocks, cross-docking. Optimisez votre logistique depuis Casablanca."
+    },
+    "importExport": {
+      "title": "Import Export Maroc | Logistique Import-Export Casablanca — RITT",
+      "description": "RITT, partenaire logistique import-export au Maroc. Conseil trade international, incoterms, documentation douanière complète depuis Casablanca."
     },
     "tracking": {
-      "title": "Suivi Shipment — RITT",
-      "description": "Suivez en temps réel vos expéditions avec RITT. Entrez votre numéro BL ou AWB."
+      "title": "Suivi Cargaison en Temps Réel | Tracking Transport Maritime & Aérien — RITT",
+      "description": "Suivez vos expéditions en temps réel avec RITT. Tracking cargaison maritime (BL), aérienne (AWB) et terrestre. Logistique transparente au Maroc."
     },
     "quote": {
-      "title": "Demander un Devis — RITT",
-      "description": "Obtenez un devis personnalisé pour vos besoins en transport et transit avec RITT."
+      "title": "Devis Transport International Maroc — RITT | Réponse sous 24h",
+      "description": "Demandez votre devis transport gratuit. Fret maritime, transports aériens, transport routier Maroc-France, dédouanement. RITT Casablanca répond sous 24h."
     },
     "blog": {
-      "title": "Blog Logistique — RITT",
-      "description": "Actualités, tendances et conseils logistiques par les experts RITT."
+      "title": "Blog Transport International & Logistique Maroc — RITT Actualités",
+      "description": "Actualités transport international, fret maritime, transport routier Maroc-France, dédouanement et logistique Afrique. Conseils experts RITT Casablanca."
     },
     "contact": {
-      "title": "Contact — RITT",
-      "description": "Contactez RITT pour vos besoins en freight forwarding. Réponse sous 24h."
+      "title": "Contact RITT — Transitaire Casablanca | Tél. 05 22 35 68 35",
+      "description": "Contactez RITT, votre freight forwarder à Casablanca. Transport international, fret maritime, transports aériens, dédouanement Maroc. Réponse sous 24h."
+    },
+    "network": {
+      "title": "Réseau Mondial RITT | Agents Logistique Maroc-Afrique-Europe",
+      "description": "Réseau d'agents RITT en Afrique, Europe, Asie et Amériques. Couverture logistique mondiale depuis Casablanca, Maroc. Transitaire international."
     }
   }
 }

@@ -19,22 +19,30 @@ export async function generateMetadata({
   const { locale } = await params
   return {
     title: {
-      template: '%s — RITT',
-      default: 'RITT — Freight Forwarder Maroc & Afrique',
+      template: '%s',
+      default: 'RITT — Transport International Maroc | Freight Forwarder Casablanca',
     },
-    description: 'RITT, Régie Internationale de Transport et Transit, votre partenaire logistique au Maroc et en Afrique.',
+    description: 'RITT, Régie Internationale de Transport et Transit, expert en transport international au Maroc et en Afrique. Fret maritime, fret aérien, transport routier, dédouanement.',
     alternates: {
+      canonical: `https://ritt.ma/${locale}`,
       languages: {
-        fr: '/fr',
-        en: '/en',
-        ar: '/ar',
+        'fr': 'https://ritt.ma/fr',
+        'en': 'https://ritt.ma/en',
+        'ar': 'https://ritt.ma/ar',
+        'x-default': 'https://ritt.ma/fr',
       },
     },
     openGraph: {
-      siteName: 'RITT',
-      locale: locale,
+      siteName: 'RITT — Transport International Maroc',
+      locale: locale === 'fr' ? 'fr_MA' : locale === 'ar' ? 'ar_MA' : 'en_US',
       type: 'website',
+      images: [{ url: '/images/logo.jpg', width: 400, height: 160, alt: 'RITT Freight Forwarder Maroc' }],
     },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@RITT_Maroc',
+    },
+    keywords: 'transport international maroc, freight forwarder casablanca, fret maritime maroc, transport routier maroc france, dédouanement maroc, transports aériens maroc, transitaire casablanca, logistique afrique',
   }
 }
 

@@ -11,9 +11,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale })
+  const hasNetworkMeta = t.has('meta.network.title' as Parameters<typeof t>[0])
   return {
-    title: `${t('nav.network')} — RITT`,
-    description: t('network.subtitle'),
+    title: hasNetworkMeta
+      ? t('meta.network.title' as Parameters<typeof t>[0])
+      : `Réseau Mondial RITT | Agents Logistique Maroc-Afrique-Europe`,
+    description: hasNetworkMeta
+      ? t('meta.network.description' as Parameters<typeof t>[0])
+      : t('network.subtitle'),
+    alternates: { canonical: `https://ritt.ma/${locale}/reseau` },
   }
 }
 
