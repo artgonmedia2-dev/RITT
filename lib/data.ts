@@ -133,7 +133,9 @@ export type TrackingData = {
   origin: string
   destination: string
   status: 'in-transit' | 'delivered' | 'pending'
-  estimatedDelivery: string
+  estimatedDelivery?: string
+  blNumber?: string | null
+  bookingRef?: string | null
   timeline: TrackingEvent[]
 }
 

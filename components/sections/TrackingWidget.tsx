@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Search, Package, MapPin, CheckCircle, Clock, Truck, Loader2 } from 'lucide-react'
+import { Search, Package, MapPin, CheckCircle, Clock, Truck, Loader2, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { TrackingData, TrackingEvent } from '@/lib/data'
 import { PHONE, EMAIL } from '@/lib/constants'
@@ -65,25 +65,34 @@ export default function TrackingWidget() {
   const [query, setQuery] = useState('')
   const [result, setResult] = useState<TrackingData | null>(null)
   const [notFound, setNotFound] = useState(false)
+  const [apiKeyMissing, setApiKeyMissing] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleTrack = async () => {
     const trackingId = query.trim().toUpperCase()
     if (!trackingId) return
-    
+
     setIsLoading(true)
+    setResult(null)
+    setNotFound(false)
+    setApiKeyMissing(false)
+
     try {
       const res = await fetch(`/api/tracking?id=${encodeURIComponent(trackingId)}`)
       if (res.ok) {
         const data = await res.json()
         setResult(data)
-        setNotFound(false)
+      } else if (res.status === 503) {
+        const body = await res.json().catch(() => ({}))
+        if (body.error === 'api_key_missing') {
+          setApiKeyMissing(true)
+        } else {
+          setNotFound(true)
+        }
       } else {
-        setResult(null)
         setNotFound(true)
       }
-    } catch (e) {
-      setResult(null)
+    } catch {
       setNotFound(true)
     } finally {
       setIsLoading(false)
@@ -157,7 +166,12 @@ export default function TrackingWidget() {
             </button>
           </div>
           <div className="flex flex-wrap gap-4 mt-3 text-xs text-white/40">
-            <span>{t('tracking.example')} <button onClick={() => setQuery('RITT-2026-001234')} className="text-brand hover:underline">RITT-2026-001234</button></span>
+            <span>
+              {t('tracking.example')}{' '}
+              <button onClick={() => setQuery('RITT-2026-001234')} className="text-brand hover:underline">RITT-2026-001234</button>
+              {' · '}
+              <span className="text-white/30">BL: MEDUXXXX12345 · Conteneur: MSCU1234567</span>
+            </span>
             <span>{t('tracking.support')} <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="text-brand hover:underline">{PHONE}</a></span>
           </div>
         </div>
@@ -177,6 +191,14 @@ export default function TrackingWidget() {
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6 pb-6 border-b border-white/10">
                 <div>
                   <p className="text-white font-bold text-xl mb-1">{result.id}</p>
+                  {(result.blNumber || result.bookingRef) && (
+                    <div className="flex items-center gap-1.5 text-white/40 text-xs mb-1">
+                      <FileText className="w-3 h-3" />
+                      {result.blNumber && <span>BL: {result.blNumber}</span>}
+                      {result.blNumber && result.bookingRef && <span>·</span>}
+                      {result.bookingRef && <span>Booking: {result.bookingRef}</span>}
+                    </div>
+                  )}
                   <div className="flex items-center gap-2 text-white/60 text-sm">
                     <MapPin className="w-4 h-4 text-brand" />
                     {result.origin} → {result.destination}
@@ -186,7 +208,9 @@ export default function TrackingWidget() {
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-1 ${statusColor}`}>
                     {statusLabel}
                   </span>
-                  <p className="text-white/50 text-xs">{t('tracking.estimated')}: {result.estimatedDelivery}</p>
+                  {result.estimatedDelivery && (
+                    <p className="text-white/50 text-xs">{t('tracking.estimated')}: {result.estimatedDelivery}</p>
+                  )}
                 </div>
               </div>
 
@@ -233,6 +257,23 @@ export default function TrackingWidget() {
               <Package className="w-12 h-12 mx-auto mb-3 text-white/30" />
               <p>{t('tracking.notFound')}</p>
               <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="mt-3 inline-block text-brand hover:underline text-sm">
+                {t('tracking.contactSupport')} — {PHONE}
+              </a>
+            </motion.div>
+          )}
+
+          {apiKeyMissing && (
+            <motion.div
+              key="api-key-missing"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="max-w-2xl mx-auto glass-card-dark border border-brand/20 rounded-2xl p-6 text-center"
+            >
+              <Package className="w-12 h-12 mx-auto mb-3 text-brand/40" />
+              <p className="text-white/70 mb-1">Tracking en ligne disponible via votre chargé de dossier.</p>
+              <p className="text-white/40 text-sm mb-3">Pour les références internes RITT, essayez : <button onClick={() => setQuery('RITT-2026-001234')} className="text-brand hover:underline">RITT-2026-001234</button></p>
+              <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="inline-block text-brand hover:underline text-sm">
                 {t('tracking.contactSupport')} — {PHONE}
               </a>
             </motion.div>

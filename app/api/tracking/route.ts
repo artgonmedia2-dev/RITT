@@ -1,128 +1,205 @@
-import { NextResponse } from 'next/server'
-import * as fs from 'fs'
-import * as path from 'path'
+import { NextRequest, NextResponse } from 'next/server'
+import { trackingDatabase } from '@/lib/data'
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const id = searchParams.get('id')
+const MSC_BASE = 'https://portal.api.msc.com/dpo/trackandtrace/v2.2'
 
+// ─── DCSA types ───────────────────────────────────────────────────────────────
+
+interface DcsaEvent {
+  eventType: 'TRANSPORT' | 'EQUIPMENT' | 'SHIPMENT'
+  eventDateTime: string
+  eventClassifierCode: 'ACT' | 'EST' | 'PLN'
+  description?: string
+  transportEventTypeCode?: 'ARRI' | 'DEPA'
+  equipmentEventTypeCode?: 'LOAD' | 'DISC' | 'GTIN' | 'GTOT' | 'STRP' | 'STUF'
+  equipmentReference?: string
+  transportCall?: {
+    unLocationCode?: string
+    vessel?: { vesselName?: string }
+  }
+  eventLocation?: { locationName?: string; unLocationCode?: string }
+  documentReferences?: Array<{
+    documentReferenceType: string
+    documentReferenceValue: string
+  }>
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+const TRANSPORT_LABELS: Record<string, string> = {
+  ARRI: 'Arrivée navire au port',
+  DEPA: 'Départ navire du port',
+}
+
+const EQUIPMENT_LABELS: Record<string, string> = {
+  LOAD: 'Chargement conteneur sur navire',
+  DISC: 'Déchargement conteneur du navire',
+  GTIN: 'Réception au terminal export',
+  GTOT: 'Remise au destinataire / Sortie terminal',
+  STRP: 'Dépotage conteneur',
+  STUF: 'Empotage conteneur',
+}
+
+function getLabel(event: DcsaEvent): string {
+  if (event.description) return event.description
+  if (event.eventType === 'TRANSPORT' && event.transportEventTypeCode) {
+    return TRANSPORT_LABELS[event.transportEventTypeCode] ?? event.transportEventTypeCode
+  }
+  if (event.eventType === 'EQUIPMENT' && event.equipmentEventTypeCode) {
+    return EQUIPMENT_LABELS[event.equipmentEventTypeCode] ?? event.equipmentEventTypeCode
+  }
+  return 'Événement'
+}
+
+function getLocation(event: DcsaEvent): string {
+  return event.eventLocation?.locationName ?? event.transportCall?.unLocationCode ?? ''
+}
+
+// Detect which MSC query parameter to use based on the reference format
+function detectRefParam(ref: string): { param: string; value: string } {
+  const clean = ref.trim().toUpperCase()
+  // BIC container code: 4 uppercase letters + 7 digits (ISO 6346)
+  if (/^[A-Z]{4}\d{7}$/.test(clean)) {
+    return { param: 'equipmentReference', value: clean }
+  }
+  // Pure numeric → carrier booking reference
+  if (/^\d{6,}$/.test(clean)) {
+    return { param: 'carrierBookingReference', value: clean }
+  }
+  // Default: Bill of Lading / Transport Document Reference
+  return { param: 'transportDocumentReference', value: clean }
+}
+
+function formatDate(iso: string): string {
+  try {
+    return new Date(iso).toLocaleString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'UTC',
+    })
+  } catch {
+    return iso
+  }
+}
+
+// ─── Route handler ────────────────────────────────────────────────────────────
+
+export async function GET(request: NextRequest) {
+  const id = request.nextUrl.searchParams.get('id')?.trim()
   if (!id) {
-    return NextResponse.json({ error: 'Missing tracking ID' }, { status: 400 })
+    return NextResponse.json({ error: 'Paramètre manquant' }, { status: 400 })
   }
 
-  let events = [];
+  const upper = id.toUpperCase()
+
+  // 1. RITT internal demo references (RITT-XXXX-XXXXXX)
+  if (upper in trackingDatabase) {
+    return NextResponse.json(trackingDatabase[upper])
+  }
+
+  // 2. Real MSC DCSA Track & Trace API
+  const apiKey = process.env.MSC_API_KEY
+  if (!apiKey) {
+    return NextResponse.json({ error: 'api_key_missing' }, { status: 503 })
+  }
 
   try {
-    // 1. Tenter de récupérer depuis l'API MSC si la clé API est configurée
-    const apiKey = process.env.MSC_API_KEY;
-    let apiSuccess = false;
+    const { param, value } = detectRefParam(upper)
+    const url = `${MSC_BASE}/events?${param}=${encodeURIComponent(value)}`
 
-    if (apiKey) {
-      const baseUrl = 'https://portal.api.msc.com/dpo/trackandtrace/v2.2/events';
-      
-      const fetchEvents = async (queryParam: string) => {
-        const url = `${baseUrl}?${queryParam}=${encodeURIComponent(id)}`;
-        const response = await fetch(url, {
-          headers: {
-            'Ocp-Apim-Subscription-Key': apiKey,
-          }
-        });
-        if (response.ok) {
-          const data = await response.json();
-          if (Array.isArray(data) && data.length > 0) {
-            return data;
-          }
-        }
-        return null;
-      };
+    const mscRes = await fetch(url, {
+      headers: {
+        'Ocp-Apim-Subscription-Key': apiKey,
+        Accept: 'application/json',
+      },
+      next: { revalidate: 120 }, // 2-minute edge cache on Vercel
+    })
 
-      // Si le format correspond à un conteneur (ex: MSCU1234567 -> 4 lettres + 7 chiffres)
-      const isContainer = /^[A-Z]{4}\d{7}$/i.test(id);
-      
-      let fetchedData = null;
-      if (isContainer) {
-        fetchedData = await fetchEvents('equipmentReference');
-        if (!fetchedData) fetchedData = await fetchEvents('transportDocumentReference');
-      } else {
-        fetchedData = await fetchEvents('transportDocumentReference');
-        if (!fetchedData) fetchedData = await fetchEvents('equipmentReference');
-      }
-
-      if (fetchedData) {
-        events = fetchedData;
-        apiSuccess = true;
-      }
+    if (mscRes.status === 404) {
+      return NextResponse.json({ error: 'not_found' }, { status: 404 })
+    }
+    if (!mscRes.ok) {
+      return NextResponse.json({ error: `MSC API error ${mscRes.status}` }, { status: 502 })
     }
 
-    // 2. Si l'API échoue ou n'est pas configurée, on utilise response.txt en fallback
-    if (!apiSuccess) {
-      const filePath = path.join(process.cwd(), 'response.txt');
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        events = JSON.parse(fileContent);
-      } else {
-        return NextResponse.json({ error: 'Source data not found and API fetch failed' }, { status: 404 });
-      }
+    const events: DcsaEvent[] = await mscRes.json()
+    if (!events?.length) {
+      return NextResponse.json({ error: 'not_found' }, { status: 404 })
     }
 
-    // 3. Traiter et formater les événements
-    events.sort((a: any, b: any) => new Date(a.eventDateTime).getTime() - new Date(b.eventDateTime).getTime());
+    // Sort chronologically
+    const sorted = [...events].sort(
+      (a, b) =>
+        new Date(a.eventDateTime).getTime() - new Date(b.eventDateTime).getTime()
+    )
 
-    const timeline = events.map((ev: any) => {
-      const isPast = new Date(ev.eventDateTime) <= new Date();
-      const locName = ev.eventLocation?.locationName;
-      const locCode = ev.transportCall?.unLocationCode;
-      const location = locName && locCode ? `${locName} (${locCode})` : locName || locCode || 'Unknown Location';
-      
+    // Use eventClassifierCode (ACT = confirmed, EST/PLN = future) — not date comparison
+    let lastActualIdx = -1
+    sorted.forEach((e, i) => {
+      if (e.eventClassifierCode === 'ACT') lastActualIdx = i
+    })
+
+    const timeline = sorted.map((event, i) => {
+      let status: 'completed' | 'current' | 'pending'
+      if (event.eventClassifierCode === 'ACT') {
+        status = i === lastActualIdx ? 'current' : 'completed'
+      } else {
+        status = 'pending'
+      }
+
+      const vessel = event.transportCall?.vessel?.vesselName
+      const loc = getLocation(event)
+
       return {
-        date: new Date(ev.eventDateTime).toLocaleString('fr-FR', {
-          year: 'numeric', month: '2-digit', day: '2-digit',
-          hour: '2-digit', minute: '2-digit'
-        }),
-        status: isPast ? 'completed' : 'pending',
-        label: ev.description || ev.transportEventTypeCode || ev.equipmentEventTypeCode,
-        location: location
-      };
-    });
-
-    let currentFound = false;
-    for (let i = timeline.length - 1; i >= 0; i--) {
-      if (timeline[i].status === 'completed' && !currentFound) {
-        timeline[i].status = 'current';
-        currentFound = true;
+        date: formatDate(event.eventDateTime),
+        status,
+        label: getLabel(event),
+        location: vessel ? `${loc}${loc ? ' — ' : ''}${vessel}` : loc,
       }
-    }
+    })
 
-    const lastEvent = events[events.length - 1];
-    let overallStatus = 'in-transit';
-    if (
-      lastEvent?.description?.toLowerCase().includes('discharged') || 
-      lastEvent?.equipmentEventTypeCode === 'DISC' || 
-      timeline.some((t: any) => t.label.toLowerCase().includes('livraison'))
-    ) {
-      overallStatus = 'delivered';
-    }
+    const hasActual = sorted.some(e => e.eventClassifierCode === 'ACT')
+    const allActual = sorted.every(e => e.eventClassifierCode === 'ACT')
+    const overallStatus = allActual ? 'delivered' : hasActual ? 'in-transit' : 'pending'
 
-    const firstEventLoc = events[0]?.eventLocation?.locationName || events[0]?.transportCall?.unLocationCode || 'Origine Inconnue';
-    const lastEventLoc = events[events.length - 1]?.eventLocation?.locationName || events[events.length - 1]?.transportCall?.unLocationCode || 'Destination Inconnue';
+    // ETA = last estimated TRANSPORT ARRI event
+    const etaEvent = [...sorted]
+      .reverse()
+      .find(
+        e =>
+          e.eventType === 'TRANSPORT' &&
+          e.eventClassifierCode === 'EST' &&
+          e.transportEventTypeCode === 'ARRI'
+      )
 
-    const estimatedDeliveryEvent = events.find((e: any) => e.eventClassifierCode === 'EST');
-    const estimatedDelivery = estimatedDeliveryEvent 
-      ? new Date(estimatedDeliveryEvent.eventDateTime).toLocaleDateString('fr-FR')
-      : new Date(events[events.length - 1].eventDateTime).toLocaleDateString('fr-FR');
+    const origin = getLocation(sorted[0]) || sorted[0].transportCall?.unLocationCode || ''
+    const destination = etaEvent
+      ? getLocation(etaEvent) || etaEvent.transportCall?.unLocationCode || ''
+      : getLocation(sorted[sorted.length - 1]) || ''
 
-    const trackingData = {
-      id: id,
-      origin: firstEventLoc,
-      destination: lastEventLoc,
+    const docRefs = events[0]?.documentReferences ?? []
+    const blNumber =
+      docRefs.find(d => d.documentReferenceType === 'TRD')?.documentReferenceValue ?? null
+    const bookingRef =
+      docRefs.find(d => d.documentReferenceType === 'BKG')?.documentReferenceValue ?? null
+
+    return NextResponse.json({
+      id: value,
+      blNumber,
+      bookingRef,
+      origin,
+      destination,
       status: overallStatus,
-      estimatedDelivery: estimatedDelivery,
-      timeline: timeline
-    };
-
-    return NextResponse.json(trackingData);
+      estimatedDelivery: etaEvent
+        ? new Date(etaEvent.eventDateTime).toLocaleDateString('fr-FR')
+        : '',
+      timeline,
+    })
   } catch (err) {
-    console.error('Tracking API Error:', err);
-    return NextResponse.json({ error: 'Failed to process tracking data' }, { status: 500 });
+    console.error('[api/tracking]', err)
+    return NextResponse.json({ error: 'Erreur interne' }, { status: 500 })
   }
 }
