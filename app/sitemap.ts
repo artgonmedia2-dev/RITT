@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
-import { LOCALES, SERVICE_SLUGS } from '@/lib/constants'
+import { LOCALES, SERVICE_SLUGS, SITE_URL } from '@/lib/constants'
 import { blogPosts } from '@/lib/data'
 
-const BASE = 'https://ritt.ma'
+const BASE = SITE_URL
 const NOW = new Date()
 export const dynamic = 'force-static'
 

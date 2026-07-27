@@ -38,7 +38,7 @@ export default async function MentionsLegalesPage({
       title: t('legal.editor'),
       content: [
         { label: 'Directeur de la publication', value: 'Direction RITT' },
-        { label: 'Site web', value: 'https://ritt.ma' },
+        { label: 'Site web', value: 'https://rittmaroc.com' },
         { label: t('contact.emailLabel'), value: EMAIL },
       ],
     },
@@ -52,7 +52,7 @@ export default async function MentionsLegalesPage({
     },
     {
       title: t('legal.ip'),
-      text: `Le site ritt.ma et l'ensemble de son contenu (textes, images, logos, graphiques) sont la propriété exclusive de RITT — ${COMPANY_FULL}. Toute reproduction, même partielle, est interdite sans l'accord préalable et écrit de RITT.`,
+      text: `Le site rittmaroc.com et l'ensemble de son contenu (textes, images, logos, graphiques) sont la propriété exclusive de RITT — ${COMPANY_FULL}. Toute reproduction, même partielle, est interdite sans l'accord préalable et écrit de RITT.`,
     },
     {
       title: t('legal.data'),
@@ -60,7 +60,7 @@ export default async function MentionsLegalesPage({
     },
     {
       title: t('legal.cookies'),
-      text: `Le site ritt.ma utilise des cookies techniques nécessaires au bon fonctionnement du site. Ces cookies ne collectent pas de données personnelles et ne sont pas utilisés à des fins publicitaires. Vous pouvez configurer votre navigateur pour refuser les cookies.`,
+      text: `Le site rittmaroc.com utilise des cookies techniques nécessaires au bon fonctionnement du site. Ces cookies ne collectent pas de données personnelles et ne sont pas utilisés à des fins publicitaires. Vous pouvez configurer votre navigateur pour refuser les cookies.`,
     },
     {
       title: t('legal.law'),

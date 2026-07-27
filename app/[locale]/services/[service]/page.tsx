@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Ship, Plane, Truck, ClipboardCheck, Warehouse, ArrowLeftRight, CheckCircle, ArrowLeft } from 'lucide-react'
 import { services, serviceDetails } from '@/lib/data'
-import { SERVICE_SLUGS } from '@/lib/constants'
+import { SERVICE_SLUGS, SITE_URL } from '@/lib/constants'
 import CTABanner from '@/components/sections/CTABanner'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -51,7 +51,7 @@ export async function generateMetadata({
   return {
     title,
     description,
-    alternates: { canonical: `https://ritt.ma/${locale}/services/${service}` },
+    alternates: { canonical: `${SITE_URL}/${locale}/services/${service}` },
     openGraph: { title, description, type: 'website' },
   }
 }

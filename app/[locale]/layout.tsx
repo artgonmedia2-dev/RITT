@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { SITE_URL } from '@/lib/constants'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -24,12 +25,12 @@ export async function generateMetadata({
     },
     description: 'RITT, Régie Internationale de Transport et Transit, expert en transport international au Maroc et en Afrique. Fret maritime, fret aérien, transport routier, dédouanement.',
     alternates: {
-      canonical: `https://ritt.ma/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: {
-        'fr': 'https://ritt.ma/fr',
-        'en': 'https://ritt.ma/en',
-        'ar': 'https://ritt.ma/ar',
-        'x-default': 'https://ritt.ma/fr',
+        'fr': `${SITE_URL}/fr`,
+        'en': `${SITE_URL}/en`,
+        'ar': `${SITE_URL}/ar`,
+        'x-default': `${SITE_URL}/fr`,
       },
     },
     openGraph: {

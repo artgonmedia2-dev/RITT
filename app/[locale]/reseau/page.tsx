@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { SITE_URL } from '@/lib/constants'
 import NetworkMap from '@/components/sections/NetworkMap'
 import { networkRegions } from '@/lib/data'
 import CTABanner from '@/components/sections/CTABanner'
@@ -19,7 +20,7 @@ export async function generateMetadata({
     description: hasNetworkMeta
       ? t('meta.network.description' as Parameters<typeof t>[0])
       : t('network.subtitle'),
-    alternates: { canonical: `https://ritt.ma/${locale}/reseau` },
+    alternates: { canonical: `${SITE_URL}/${locale}/reseau` },
   }
 }
 

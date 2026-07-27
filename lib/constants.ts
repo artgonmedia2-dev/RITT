@@ -1,7 +1,7 @@
 export const PHONE = '05 22 35 68 35'
 export const EMAIL = 'contact@rittmaroc.com'
 export const ADDRESS = '84 Bd Bahmad, Rce Salam, 3ème étage, appt 6, Casablanca 20000 MA'
-export const SITE_URL = 'https://ritt.ma'
+export const SITE_URL = 'https://rittmaroc.com'
 export const COMPANY_NAME = 'RITT'
 export const COMPANY_FULL = 'Régie Internationale de Transport et Transit'
 
